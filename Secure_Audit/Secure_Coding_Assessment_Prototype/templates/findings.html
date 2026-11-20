@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Findings | SecureCodeAudit{% endblock %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">REVIEW OUTPUT / VULNERABILITY MANAGEMENT</p><h1>Security Findings</h1><p>Review detected weaknesses, affected principles, and remediation guidance.</p></div><a class="button" href="/scanner"><span aria-hidden="true">+</span> New Scan</a></section>
+<section class="toolbar panel findings-toolbar">
+  <div class="finding-filter-grid">
+    <label class="finding-search-label">Search<input id="finding-search" type="search" placeholder="Title, rule, file, or description"></label>
+    <label>Severity<select id="finding-severity"><option value="">All severities</option></select></label>
+    <label>File<select id="finding-file"><option value="">All files</option></select></label>
+    <label>CWE<select id="finding-cwe"><option value="">All CWE mappings</option></select></label>
+    <label>OWASP<select id="finding-owasp"><option value="">All OWASP mappings</option></select></label>
+    <label>Principle<select id="finding-principle"><option value="">All principles</option></select></label>
+    <label>Status<select id="finding-status"><option value="">All statuses</option><option>Open</option><option>In Progress</option><option>Resolved</option><option>False Positive</option></select></label>
+    <label>Sort by<select id="finding-sort"><option value="severity">Severity</option><option value="line">Line number</option><option value="file">Filename</option><option value="priority">Priority</option></select></label>
+  </div>
+  <div class="finding-filter-actions"><span id="finding-count" class="toolbar-count">No scan loaded</span><button id="clear-finding-filters" class="button secondary" type="button">Clear filters</button></div>
+</section>
+<section class="panel findings-panel"><div id="findings-empty" class="empty-state"><span class="empty-icon">!</span><strong>No security findings</strong><p>Run a security scan to identify potential weaknesses.</p><a class="button" href="/scanner">Open Code Scanner</a></div><div id="findings-list"></div><div id="finding-pagination" class="finding-pagination hidden"><button class="button secondary" type="button" id="finding-prev">Previous</button><span id="finding-page"></span><button class="button secondary" type="button" id="finding-next">Next</button></div></section>
+{% endblock %}

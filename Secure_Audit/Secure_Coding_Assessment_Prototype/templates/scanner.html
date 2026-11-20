@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Code Scanner | SecureCodeAudit{% endblock %}
+{% block content %}
+<section class="page-heading scanner-heading"><div><p class="eyebrow">STATIC ANALYSIS / PYTHON</p><h1>Python Code Scanner</h1><p>Analyze one Python file or scan a bounded ZIP project without executing submitted code.</p></div><span class="mode-badge"><span class="status-dot"></span> Static analysis only</span></section>
+<section class="panel scan-mode-panel">
+<div class="scan-mode-switch" role="group" aria-label="Scan mode">
+  <button type="button" class="button secondary active" data-scan-mode="single" aria-pressed="true">Single Python File</button>
+  <button type="button" class="button secondary" data-scan-mode="project" aria-pressed="false">Full Python Project</button>
+  <button type="button" class="button secondary" data-scan-mode="git" aria-pressed="false">Public GitHub Repository</button>
+</div>
+<div id="single-mode">
+<section class="workspace-grid">
+<div class="panel editor-panel">
+<div class="section-heading"><div><p class="eyebrow">SOURCE INPUT</p><h2>Source Code</h2></div><span class="file-type">.PY</span></div>
+<div class="editor-shell"><div id="line-numbers" class="line-numbers" aria-hidden="true"></div><textarea id="code" spellcheck="false" aria-label="Python source code">import os
+import tempfile
+
+username = input("Username: ")
+filename = input("File name: ")
+password = input("Password: ")
+
+os.system("ping " + username)
+
+with open(filename, "r") as file:
+    data = file.read()
+
+users = {username: password}
+
+try:
+    process_data(data)
+except:
+    pass
+
+temp_file = "/tmp/report.txt"</textarea>
+</div>
+<div class="notice"><span class="notice-icon">i</span><span><strong>Static analysis only</strong><br>Submitted source code is parsed as text and never executed.</span></div>
+<div class="file-actions"><label class="button secondary file-button" for="file">Choose File</label><input id="file" type="file" accept=".py,text/x-python"><button class="button secondary" type="button" onclick="uploadCode()">Load File</button><button class="button secondary" type="button" onclick="loadExample('vulnerable')">Vulnerable Example</button><button class="button secondary" type="button" onclick="loadExample('safer')">Safer Example</button></div>
+<div class="scanner-actions"><button class="button" type="button" onclick="scanCode()"><span aria-hidden="true">&#9654;</span> Run Security Scan</button><button class="button ghost" type="button" onclick="clearEditor()">Clear editor</button></div>
+</section>
+</div>
+<div id="git-mode" class="hidden">
+  <label class="git-repository-label" for="github-repository-url">Public GitHub repository URL</label>
+  <input id="github-repository-url" type="url" inputmode="url" placeholder="https://github.com/owner/repository/tree/branch" autocomplete="url">
+  <p class="notice"><span class="notice-icon">i</span><span>Only public repositories on github.com are accepted. The app resolves a branch to a commit and downloads a bounded ZIP from GitHub's fixed hosts. No credentials are accepted; repository files are never executed or cloned with Git.</span></p>
+  <div class="scanner-actions"><button id="github-scan-button" class="button" type="button">Scan GitHub Repository</button></div>
+  <p id="github-status" role="status" aria-live="polite"></p>
+</div>
+<div id="project-mode" class="hidden">
+  <div id="project-drop-zone" class="project-drop-zone">
+    <strong>Choose a ZIP archive or drop it here</strong>
+    <p>Up to 20 MB; Python source only is analyzed. Other files are listed as skipped.</p>
+    <label class="button secondary file-button" for="project-zip">Choose ZIP project</label>
+    <input id="project-zip" type="file" accept=".zip,application/zip">
+    <span id="project-name" class="project-name">No project selected</span>
+  </div>
+  <div class="scanner-actions"><button id="project-scan-button" class="button" type="button" onclick="scanProject()" disabled>Run Project Scan</button></div>
+  <p id="project-status" role="status" aria-live="polite"></p>
+  <div id="project-file-summary" class="project-file-summary hidden"></div>
+</div>
+</section>
+<section id="results" class="panel results-panel hidden" aria-live="polite"></section>
+{% endblock %}

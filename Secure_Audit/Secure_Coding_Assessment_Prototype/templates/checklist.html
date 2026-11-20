@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Security Checklist | SecureCodeAudit{% endblock %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">STATIC REVIEW / EVIDENCE STATUS</p><h1>Security Checklist</h1><p>Checklist results are based on configured scanner checks for the selected browser-stored scan.</p></div></section>
+<section class="notice"><span class="notice-icon">i</span><span><strong>Not Assessed is not Pass.</strong> A missing scanner finding does not prove a control is implemented safely. This prototype marks only detected patterns as Fail; otherwise, checks remain Not Assessed.</span></section>
+<section id="checklist-content" class="panel"><div class="empty-state compact"><strong>No scan loaded</strong><p>Run a scan to see rule-level checklist evidence.</p><a class="button" href="/scanner">Open Code Scanner</a></div></section>
+{% endblock %}

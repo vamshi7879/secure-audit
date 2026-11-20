@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Scan History | SecureCodeAudit{% endblock %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">LOCAL BROWSER STORAGE / SCAN RECORDS</p><h1>Scan History</h1><p>Review and select scans stored in this browser. History is not synced across devices or browsers.</p></div><a class="button" href="/scanner">Run a Scan</a></section>
+<section id="scan-history-content" class="panel"><div class="empty-state compact"><strong>No scan history available</strong><p>Completed scans will appear here in this browser.</p></div></section>
+{% endblock %}

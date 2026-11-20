@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Reports | SecureCodeAudit{% endblock %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">DOCUMENTATION / EXPORT</p><h1>Security Reports</h1><p>Export actual results from the latest scan or select a previous scan stored in this browser.</p></div><a class="button" href="/scanner">Open Scanner</a></section>
+<section class="panel report-callout report-configuration">
+  <div class="report-icon">F</div>
+  <div class="report-controls">
+    <h2>Configure report</h2>
+    <label>Scan<select id="report-scan"><option value="">Latest scan</option></select></label>
+    <label>Severities<select id="report-severity"><option value="">All severities</option><option>Critical</option><option>High</option><option>Medium</option><option>Low</option><option>Info</option></select></label>
+    <label class="report-checkbox"><input type="checkbox" id="report-remediation" checked> Include remediation</label>
+    <label class="report-checkbox"><input type="checkbox" id="report-mappings" checked> Include CWE/OWASP references</label>
+    <label class="report-checkbox"><input type="checkbox" id="report-principles" checked> Include security principles</label>
+    <p id="report-status" role="status" aria-live="polite">Run a scan before generating a report.</p>
+  </div>
+  <div class="report-buttons"><button id="generate-report" class="button" type="button" data-report-format="pdf" disabled>Download PDF</button><button class="button secondary" type="button" data-report-format="csv" disabled>Download CSV</button><button class="button secondary" type="button" data-report-format="json" disabled>Download JSON</button></div>
+</section>
+<section class="panel"><div class="section-heading"><div><p class="eyebrow">REPORT HISTORY</p><h2>Recent Reports</h2></div></div><div id="report-history" class="empty-state compact"><span class="empty-icon">F</span><strong>No reports generated</strong><p>Generated reports are downloaded directly and are not stored by this prototype.</p></div></section>
+<p class="notice legal-notice"><span class="notice-icon">i</span>This report represents an educational static-analysis prototype and does not constitute a complete penetration test or security audit.</p>
+{% endblock %}

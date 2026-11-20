@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Dependencies | SecureCodeAudit{% endblock %}
+{% block content %}
+<section class="page-heading"><div><p class="eyebrow">DEPENDENCY AUDIT / OSV</p><h1>Dependencies</h1><p>Review supported dependency manifests without installing or executing packages.</p></div></section>
+<section class="panel dependency-panel">
+  <div class="section-heading"><div><p class="eyebrow">SUPPORTED MANIFESTS</p><h2>Check a requirements.txt or pyproject.toml</h2></div></div>
+  <label class="button secondary file-button" for="dependency-manifest">Choose Manifest</label>
+  <input id="dependency-manifest" type="file" accept=".txt,.toml">
+  <button id="dependency-check-button" type="button" class="button" disabled>Check against OSV</button>
+  <p class="notice"><span class="notice-icon">i</span><span>Package names and pinned versions are sent to the public OSV vulnerability service only when you explicitly start a lookup. Unpinned ranges and lookup failures are not reported as safe.</span></p>
+  <p id="dependency-status" role="status" aria-live="polite">No manifest checked.</p>
+  <div id="dependency-results"></div>
+</section>
+<section class="notice"><span class="notice-icon">i</span><span>ZIP project scans do not install dependencies. Git repository fetching is unavailable in this prototype to avoid SSRF, credential, and repository-execution risks.</span></section>
+{% endblock %}
