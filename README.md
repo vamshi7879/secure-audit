@@ -152,11 +152,7 @@ sudo apt update
 sudo apt install git python3 python3-pip python3-venv -y
 ```
 
-### 2️⃣ Clone the Repository
 
-```bash
-git clone https://github.com/YashwanthL18/secure-audit.git
-```
 
 ### 3️⃣ Navigate to the Application Directory
 
