@@ -13,12 +13,6 @@
   <img src="https://img.shields.io/badge/License-MIT-green.svg" />
 </p>
 
-<p align="center">
-  <a href="https://github.com/YashwanthL18/secure-audit">Repository</a> •
-  <a href="https://github.com/YashwanthL18/secure-audit/issues">Report an Issue</a> •
-  <a href="https://github.com/YashwanthL18/secure-audit/forks">Fork Project</a>
-</p>
-
 ---
 
 ## 📖 About The Project
